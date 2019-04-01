@@ -49,7 +49,7 @@ while answer != 'Q':
         elif do == 3:
             print(psutil.pids())
         elif do == 4:
-            print("=Дублирование файлов в текущей директории=")
+            print("Дублирование файлов в текущей директории")
             file_list = os.listdir()
             i = 0
             while i < len(file_list):
@@ -57,14 +57,20 @@ while answer != 'Q':
                 i += 1
 
         elif do == 5:
-            print("=Дублирование указанного файла=")
+            print("Дублирование указанного файла")
             filename = input("Укажите имя файла:")
             duplicate_file(filename)
 
         elif do == 6:
-            print("=Удаление дубликатов в директории=")
+            print("Удаление дубликатов в директории")
             dirname = input("Укажите имя директории:")
             file_list = os.listdir(dirname)
+            i = 0
+            while i < len(file_list):
+                fullname = os.path.join(dirname, file_list)
+                if fullname.endswith('.dupl'):
+                    os.remove(fullname)
+                    i += 1
 
     elif answer == 'N':
         print("До свидания!")
