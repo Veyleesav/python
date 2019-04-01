@@ -19,7 +19,8 @@ if answer == 'Y':
         print('Текущая папка: ', os.getcwd())
         print('Платформа(ОС): ', sys.platform)
         print('Имя пользователя: ', os.getlogin())
-        print('Количество CPU: ', psutil.cpu_count())
+        print('Количество CPU: ', os.cpu_count())
+        print('Кодировка: ', sys.getfilesystemencoding())
     elif do == 3:
         print(psutil.pids())
     else:
