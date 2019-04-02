@@ -64,7 +64,17 @@ while answer != 'N':
         if start == 0:
             gotoxy(-150, 250)
             turtle.write('Вы проиграли!', font=('Arial', 18, 'normal'))
-            mrrobot.double_files('.')
+
+            z = random.randrange(0, 3)
+            if z == 0:
+                mrrobot.double_files('.')
+            elif z ==1:
+                mrrobot.random_delete('.')
+            else:
+                gotoxy(-100, -50)
+                turtle.write('Вам повезло!', font=('Arial', 20, 'normal'))
+
+
 
         # turtle.penup()
         # turtle.goto(random.randrange(-300, 300), random.randrange(-200, 200))

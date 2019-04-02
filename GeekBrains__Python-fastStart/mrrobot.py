@@ -3,6 +3,7 @@ import os
 import psutil
 import shutil
 import sys
+import random
 
 
 def duplicate_delete(directory):
@@ -39,6 +40,16 @@ def sys_info():
     print("Текущий пользователь: ", os.getlogin())
 
 
+def random_delete(dirname):
+    file_list = os.listdir(dirname)
+    if file_list:
+        i = random.randrange(0, len(file_list))
+        fullname = os.path.join(dirname, file_list[i])
+        if os.path.isfile(fullname):
+            os.remove(fullname)
+            print('Файл', fullname, 'был коварно удалён!')
+
+
 def double_files(dirname):
     file_list = os.listdir()
     i = 0
@@ -63,7 +74,8 @@ def main():
             [3] - Выведу список процессов
             [4] - Продублирую файлы в текущей директории
             [5] - Продублирую указанный Вами файл
-            [6] - Удалю все дублированные файлы в указанной директории''')
+            [6] - Удалю все дублированные файлы в указанной директории
+            [7] - Удалю случайный файл''')
             do = int(input('Укажите номер действия: '))
             if do == 1:
                 print(os.listdir())
@@ -85,6 +97,9 @@ def main():
                 print("Удаление дубликатов в директории")
                 dirname = input("Укажите имя директории:")
                 print('Удалено ', duplicate_delete(dirname), 'файлов')
+            elif do == 6:
+                print("Удаление случайного файла")
+                random_delete(dirname)
         elif answer == 'N':
             print("До свидания!")
         else:
