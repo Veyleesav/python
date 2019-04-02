@@ -4,6 +4,15 @@ import psutil
 import shutil
 import sys
 
+def duplicate_delete(directory):
+    file_list = os.listdir(directory)
+    counter = 0
+    for f in file_list:
+        fullname = os.path.join(directory, f)
+        if fullname.endswith('.dupl'):
+            counter += 1
+            os.remove(fullname)
+    return counter
 
 def duplicate_file(filename):
     if os.path.isfile(filename):
@@ -64,11 +73,7 @@ while answer != 'Q':
         elif do == 6:
             print("Удаление дубликатов в директории")
             dirname = input("Укажите имя директории:")
-            file_list = os.listdir(dirname)
-            for f in file_list:
-                fullname = os.path.join(dirname, f)
-                if fullname.endswith('.dupl'):
-                    os.remove(fullname)
+            print('Удалено ', duplicate_delete(dirname), 'файлов')
     elif answer == 'N':
         print("До свидания!")
     else:
