@@ -4,15 +4,19 @@ import psutil
 import shutil
 import sys
 
+
 def duplicate_delete(directory):
     file_list = os.listdir(directory)
     counter = 0
     for f in file_list:
         fullname = os.path.join(directory, f)
         if fullname.endswith('.dupl'):
-            counter += 1
             os.remove(fullname)
+            if not os.path.exists(fullname):
+                counter +=1
+                print('Файл', fullname, 'был успешно удалён.')
     return counter
+
 
 def duplicate_file(filename):
     if os.path.isfile(filename):
@@ -32,7 +36,8 @@ def sys_info():
     print("Платформа: ", sys.platform)
     print("Кодировка файловой системы: ", sys.getfilesystemencoding())
     print("Текущая директория: ", os.getcwd())
-    print("Текущий пользователь: ", os.getlogin())\
+    print("Текущий пользователь: ", os.getlogin())
+
 
 print("'Hello world' program started")
 print('Hello, World! ')
