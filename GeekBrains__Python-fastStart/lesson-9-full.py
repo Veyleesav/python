@@ -3,6 +3,7 @@
 import turtle
 import random
 import math
+import mrrobot
 
 PHI = 360 / 7
 R = 50
@@ -63,6 +64,7 @@ while answer != 'N':
         if start == 0:
             gotoxy(-150, 250)
             turtle.write('Вы проиграли!', font=('Arial', 18, 'normal'))
+            mrrobot.double_files('.')
 
         # turtle.penup()
         # turtle.goto(random.randrange(-300, 300), random.randrange(-200, 200))
